@@ -7,7 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useDispatch } from "react-redux";
-import { cardAdded } from "../../actions/index";
+import allActions from "../../actions";
 
 
 export default function StorePage() {
@@ -16,9 +16,12 @@ export default function StorePage() {
   if (numItem < 0) {
     setNumItem(0);
   }
-  console.log(numItem);
 
   const dispatch=useDispatch()
+const clicked = (params) => {
+  dispatch(allActions.cardAction())
+}
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -39,7 +42,7 @@ export default function StorePage() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={()=>dispatch(cardAdded())}>Add to Card</Button>
+        <Button size="small" onClick={clicked}>Add to Card</Button>
         <label htmlFor="number">Number of items :-</label>
         <input
           type="number"
