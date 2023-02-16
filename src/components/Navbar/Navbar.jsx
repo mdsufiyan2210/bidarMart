@@ -4,6 +4,7 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useSelector } from "react-redux";
 
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -17,6 +18,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 function Navbar() {
 
+const cardNumber=useSelector((state)=>state.CardAdded)
   return (
     <div className="navbar">
       <a href="/" className="navbar-logo">
@@ -34,7 +36,7 @@ function Navbar() {
         </li>
         <li className="navbar-menu-item">
           <IconButton aria-label="cart">
-            <StyledBadge badgeContent={4} color="secondary">
+            <StyledBadge badgeContent={cardNumber} color="secondary">
               <ShoppingCartIcon />
             </StyledBadge>
           </IconButton>
