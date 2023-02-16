@@ -1,7 +1,9 @@
 import cardAction from './cardAction'
+import itemAction from './itemAction';
 
 const allActions ={
-    cardAction
+    cardAction,
+    itemAction
 }
 
 export default allActions;

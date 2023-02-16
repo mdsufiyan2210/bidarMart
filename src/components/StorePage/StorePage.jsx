@@ -12,15 +12,16 @@ import allActions from "../../actions";
 
 export default function StorePage() {
   const [numItem, setNumItem] = useState(1);
-  const [price, setPrice] = useState(1000);
+  const [price,] = useState(1000);
   if (numItem < 0) {
     setNumItem(0);
   }
 
-  const dispatch=useDispatch()
-const clicked = (params) => {
-  dispatch(allActions.cardAction())
-}
+  const dispatch = useDispatch()
+  const clicked = (params) => {
+    dispatch(allActions.cardAction())
+    dispatch(allActions.itemAction(numItem))
+  }
 
   return (
     <Card sx={{ maxWidth: 345 }}>

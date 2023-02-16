@@ -2,9 +2,10 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import './cart.css'
+import { useSelector } from "react-redux";
 
 export default function Cart() {
-
+  const items = useSelector(state => state.numberItems)
   return (
     <Box
       sx={{
@@ -21,13 +22,13 @@ export default function Cart() {
         <div className="cart">
           <h2 className="total">TOTAL AMMOUNT</h2>
           <div className="para">
-          <p>product <strong>$ 450.00</strong></p>
+          <p>product <strong>$ 1000.00</strong></p>
           <p>shipping costs <strong>Free</strong></p>
           <p>payment cost<strong>Free</strong></p>
-          <p>Number of items<strong>1</strong></p>
+          <p>Number of items<strong>{items}</strong></p>
           </div>
           <hr />
-          <h3>Total    $5400.00</h3>
+          <h3>Total    ${items*1000}</h3>
         </div>
 
       </Paper>
