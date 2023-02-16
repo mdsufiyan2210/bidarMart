@@ -1,4 +1,5 @@
 import './App.css';
+import Cart from './components/Cart/Cart';
 import Navbar from './components/Navbar/Navbar';
 import StorePage from './components/StorePage/StorePage';
 
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
       <div className="store">
       <StorePage />
+      <Cart />
       </div>
     </div>
   );

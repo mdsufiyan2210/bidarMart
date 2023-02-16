@@ -1,0 +1,28 @@
+.cart{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: justify;
+    justify-content: center;
+}
+
+h2{
+   margin-top: 30px;
+   margin-bottom: 20px;
+}
+
+P{
+    line-height: 25PX;
+    color: gray;
+    text-align: justify;
+    align-self: flex-start;
+}
+
+h3{
+    line-height: 50px;
+    color: red;
+}
+
+strong{
+    margin-left: 50px;
+}
