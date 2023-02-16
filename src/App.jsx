@@ -1,9 +1,14 @@
 import './App.css';
+import Navbar from './components/Navbar/Navbar';
+import StorePage from './components/StorePage/StorePage';
 
 function App() {
   return (
-    <div className="App">
-    <h1>Ecommerce website</h1>
+    <div>
+      <Navbar />
+      <div className="store">
+      <StorePage />
+      </div>
     </div>
   );
 }
