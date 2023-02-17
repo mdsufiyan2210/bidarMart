@@ -24,7 +24,7 @@ export default function StorePage() {
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} className="card">
       <CardMedia
         sx={{ height: 250 }}
         image="https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SY450_.jpg"

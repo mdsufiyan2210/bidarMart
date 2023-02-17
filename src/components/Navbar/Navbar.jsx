@@ -5,6 +5,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -19,6 +20,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function Navbar() {
 
 const cardNumber=useSelector((state)=>state.CardAdded)
+const navigate = useNavigate()
+const shopIcon = (params) => {
+navigate("/cart")
+}
+
   return (
     <div className="navbar">
       <a href="/" className="navbar-logo">
@@ -26,16 +32,16 @@ const cardNumber=useSelector((state)=>state.CardAdded)
       </a>
       <ul className="navbar-menu">
         <li className="navbar-menu-item">
-          <a href="/shop">Shop</a>
+          <Link to="/shop">Shop </Link>
         </li>
         <li className="navbar-menu-item">
-          <a href="/about">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li className="navbar-menu-item">
-          <a href="/contact">Contact</a>
+          <Link to="/contact">Contact</Link>
         </li>
         <li className="navbar-menu-item">
-          <IconButton aria-label="cart">
+          <IconButton aria-label="cart" onClick={shopIcon}>
             <StyledBadge badgeContent={cardNumber} color="secondary">
               <ShoppingCartIcon />
             </StyledBadge>

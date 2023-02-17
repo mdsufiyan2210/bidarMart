@@ -5,3 +5,8 @@ input{
 label{
     margin-left: 20px;
 }
+
+.card{
+    margin-top: 5%;
+    margin-left: 5%;
+}
