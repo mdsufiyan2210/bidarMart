@@ -20,16 +20,18 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function Navbar() {
 
 const cardNumber=useSelector((state)=>state.CardAdded)
+
 const navigate = useNavigate()
+
 const shopIcon = (params) => {
 navigate("/cart")
 }
 
   return (
     <div className="navbar">
-      <a href="/" className="navbar-logo">
+      <Link to="/" className="navbar-logo">
         YourLogo
-      </a>
+      </Link>
       <ul className="navbar-menu">
         <li className="navbar-menu-item">
           <Link to="/shop">Shop </Link>

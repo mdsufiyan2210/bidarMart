@@ -2,10 +2,18 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import './cart.css'
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import allActions from "../../actions";
 
 export default function Cart() {
   const items = useSelector(state => state.numberItems)
+  const price = useSelector(state => state.priceAdded)
+  const dispatch = useDispatch()
+
+  const remove = (params) => {
+    dispatch(allActions.visible(false))
+  }
+  
   return (
     <Box
       sx={{
@@ -22,13 +30,14 @@ export default function Cart() {
         <div className="cart">
           <h2 className="total">TOTAL AMMOUNT</h2>
           <div className="para">
-          <p>product <strong>$ 1000.00</strong></p>
+          <p>product <strong>$ {price}</strong></p>
           <p>shipping costs <strong>Free</strong></p>
           <p>payment cost<strong>Free</strong></p>
           <p>Number of items<strong>{items}</strong></p>
           </div>
           <hr />
           <h3>Total    ${items*1000}</h3>
+          <button onClick={remove}>remove from cart</button>
         </div>
 
       </Paper>

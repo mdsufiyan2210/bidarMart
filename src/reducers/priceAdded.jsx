@@ -1,11 +1,11 @@
 const initial=0;
-const numberItems = (state=initial,action) => {
+const priceAdded = (state=initial,action) => {
   switch (action.type) {
-    case "NumberOfItem":
+    case "price":
       return parseInt(action.payload)
     default:
       return state;
   }
 };
 
-export default numberItems;
+export default priceAdded;

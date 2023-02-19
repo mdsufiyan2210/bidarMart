@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useDispatch } from "react-redux";
 import allActions from "../../actions";
+import { useNavigate } from "react-router-dom";
 
 
 export default function StorePage() {
@@ -17,10 +18,17 @@ export default function StorePage() {
     setNumItem(0);
   }
 
+  const navigate = useNavigate ()
+
   const dispatch = useDispatch()
+
   const clicked = (params) => {
     dispatch(allActions.cardAction())
     dispatch(allActions.itemAction(numItem))
+    dispatch(allActions.price(1000))
+    dispatch(allActions.visible(true))
+
+    navigate("/cart")
   }
 
   return (
