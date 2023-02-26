@@ -1,67 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./store.css";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { useDispatch } from "react-redux";
-import allActions from "../../actions";
-import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
+import SimpleImageSlider from "react-simple-image-slider";
 
 export default function StorePage() {
-  const [numItem, setNumItem] = useState(1);
-  const [price,] = useState(1000);
-  if (numItem < 0) {
-    setNumItem(0);
+  const [data, setData] = useState([])
+  const apiCall = async (params) => {
+    const response = await axios.get('https://dummyjson.com/products')
+    setData(response.data.products)
   }
+  console.log(data)
+  useEffect(() => {
+    apiCall()
+  }, [])
 
-  const navigate = useNavigate ()
-
-  const dispatch = useDispatch()
-
-  const clicked = (params) => {
-    dispatch(allActions.cardAction())
-    dispatch(allActions.itemAction(numItem))
-    dispatch(allActions.price(1000))
-    dispatch(allActions.visible(true))
-
-    navigate("/cart")
-  }
 
   return (
-    <Card sx={{ maxWidth: 345 }} className="card">
-      <CardMedia
-        sx={{ height: 250 }}
-        image="https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SY450_.jpg"
-        title="green iguana"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lenovo ideapad 500
-        </Typography>
-        <Typography gutterBottom variant="h5" component="div">
-          price=${price}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          14 ich display with intel i5 12th gen (250GB SSD & 1TB HDD) windows 11
-          preintsalled with microsoft office life time free
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small" onClick={clicked}>Add to Card</Button>
-        <label htmlFor="number">Number of items :-</label>
-        <input
-          type="number"
-          id="number"
-          onChange={(e) => {
-            setNumItem(e.target.value);
-          }}
-          value={numItem}
-        />
-      </CardActions>
-    </Card>
+    <>
+      <div className="container">
+        {data.map((data) => {
+          return (
+            <div className="items">
+              <SimpleImageSlider
+                width={400}
+                height={300}
+                images={data.images}
+                showBullets={true}
+                showNavs={true}
+              />
+              <h1>{data.title}</h1>
+              <p>{data.id}</p>
+              <p>{data.description}</p>
+              <p>{data.price}</p>
+              <p>{data.discountPercentage}</p>
+            </div>
+          )
+        })}
+      </div>
+    </>
   );
 }
