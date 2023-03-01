@@ -13,7 +13,7 @@ export default function StorePage() {
     const response = await axios.get('https://dummyjson.com/products')
     setData(response.data.products)
   }
-  console.log(data)
+  
   useEffect(() => {
     apiCall()
   }, [])
@@ -22,7 +22,8 @@ const dispatch = useDispatch()
 const add = (add) => {
   dispatch(allActions.cardAction())
   dispatch(allActions.itemAction(copydata))
-  dispatch(allActions.price(add))  
+  dispatch(allActions.price(add))
+  dispatch(allActions.visible(true))
 }
 
 useEffect(()=>{

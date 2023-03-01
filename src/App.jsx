@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/shop' element={<StorePage />} />
-        <Route path='/cart' element={ visible? <Cart /> :"nothing is addded"} />
+        <Route path='/cart' element={  <Cart /> } />
       </Routes>
     </BrowserRouter>
   );
