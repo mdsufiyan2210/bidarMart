@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import "./store.css";
 import axios from "axios";
 import SimpleImageSlider from "react-simple-image-slider";
+import { useDispatch } from "react-redux";
+import allActions from "../../actions";
+
 
 export default function StorePage() {
   const [data, setData] = useState([])
@@ -13,6 +16,11 @@ export default function StorePage() {
   useEffect(() => {
     apiCall()
   }, [])
+
+const dispatch = useDispatch()
+const add = (params) => {
+  dispatch(allActions.cardAction())
+}
 
 
   return (
@@ -33,6 +41,7 @@ export default function StorePage() {
               <p>{data.description}</p>
               <p>{data.price}</p>
               <p>{data.discountPercentage}</p>
+              <button onClick={add}>Add to cart</button>
             </div>
           )
         })}

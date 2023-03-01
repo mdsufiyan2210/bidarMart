@@ -26,6 +26,7 @@ export default function Cart() {
         },
       }}
     >
+      
       <Paper elevation={3}>
         <div className="cart">
           <h2 className="total">TOTAL AMMOUNT</h2>
